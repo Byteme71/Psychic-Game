@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ocu<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,32 +33,41 @@
         var wins = 0;
         var losses = 0;
         var guesses = 10;
+        var soFar = [];
+      
        
+        document.getElementById("wins").innerHTML = wins;
+        document.getElementById("losses").innerHTML = losses;
+        document.getElementById("guesses").innerHTML = guesses;
 
-        document.onkeyup = function () {
-            console.log(event.key);
+        document.onkeyup = function (event) {
             var userKey = event.key;
             if (letters.indexOf(userKey) !== -1){
                 if (randomChoice === userKey){
                    wins++;
-                   alert("You win!!");
+                   guesses--;
                    document.getElementById("wins").innerHTML = wins;
                    document.getElementById("losses").innerHTML = losses;
-                   document.getElementById("guesses").innerHTML = guesses; 
+                   document.getElementById("guesses").innerHTML = guesses;
+                   alert("You win!!"); 
                 }
                 else {
                     losses++;
                     guesses--;
-                    //Need to use Vanilla JS to update the front end with the new wins/losses/gueses
-                    alert("Wrong guess!");
+                    document.getElementById("wins").innerHTML = wins;
+                    document.getElementById("losses").innerHTML = losses;
+                    document.getElementById("guesses").innerHTML = guesses; 
+                    soFar.push(userKey);
+                    document.getElementById("so far").innerHTML = soFar;
                 }
                 if(guesses === 0) {
                   losses++;
+                  alert("Game Over!!");
+                  document.location.reload();               
                 
                 }
             }
                 else {
-                    //Here is code you would write if you wanted something special done when the user does not press a letter
                     alert("Not a letter!")
             }
         } 

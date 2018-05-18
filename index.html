@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Daniela's Psychic Game</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
         var guesses = 10;
         var soFar = [];
       
-       
+      
         document.getElementById("wins").innerHTML = wins;
         document.getElementById("losses").innerHTML = losses;
         document.getElementById("guesses").innerHTML = guesses;
@@ -50,6 +50,7 @@
                    document.getElementById("losses").innerHTML = losses;
                    document.getElementById("guesses").innerHTML = guesses;
                    alert("You win!!"); 
+                   document.location.reload();
                 }
                 else {
                     losses++;
@@ -58,14 +59,20 @@
                     document.getElementById("losses").innerHTML = losses;
                     document.getElementById("guesses").innerHTML = guesses; 
                     soFar.push(userKey) 
-                    document.getElementById("so far").innerHTML = soFar;
+                    document.getElementById("so far").innerHTML = soFar
+                        // if (userKey === soFar){
+                        // alert("Already Used!")
+                        // }  
+                        // trying to make it not reuse a letter but cant find how!!     
                 }
-                if(guesses === 0) {
+
+                if (guesses === 0) {
                   losses++;
                   alert("Game Over!!");
                   document.location.reload();               
                 
                 }
+
             }
                 else {
                     alert("Not a letter!")
